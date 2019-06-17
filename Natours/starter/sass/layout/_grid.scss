@@ -1,7 +1,7 @@
 .row{
     max-width: $grid-width;
-    background-color: #eee;
     margin: 0 auto;
+    padding: 0 10rem; //temp fix
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
     }
@@ -14,8 +14,7 @@
     //which contains col-
     //eg: class$= select all the elements where the class attributs end 
     //width col-
-    [class^="col-"]{
-        background-color: orangered;
+    [class^="col-"]{      
         float:left;
         &:not(:last-child){
             margin-right: $gutter-horizontal;
