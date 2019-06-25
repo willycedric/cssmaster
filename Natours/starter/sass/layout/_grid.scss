@@ -1,7 +1,7 @@
 .row{
     max-width: $grid-width;
     margin: 0 auto;
-    padding: 0 10rem; //temp fix
+    // padding: 0 10rem; //temp fix
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
     }
