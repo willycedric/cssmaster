@@ -1,5 +1,4 @@
 .popup{
-
     height: 100vh;
     width: 100%;
     position: fixed;
@@ -7,22 +6,27 @@
     left:0;
     background-color: rgba($color-black, .8);
     z-index:9999;
+    opacity: 0;
+    visibility: hidden;
+    transition:all .3s;
+    
 
     &__content{
         @include absCenter;
-
         width: 75%;
         background-color: $color-white-default;
         box-shadow: 0 2rem 4rem rgba($color-black,.2);
         border-radius: 3px;
         display: table;
         overflow: hidden;
+        opacity:0;
+        transform: translate(-50%, -50%) scale(.25); //not possible to have two transform in the same statement
+        transition: all .5s .2s;
     }
 
     &__left{
         width: 33.33333%;
-       display: table-cell;
-     
+        display: table-cell;
     }
 
     &__right{
@@ -35,23 +39,49 @@
     &__img{
         display: block;
         width:100%; //entire parent width
-
     }
     &__text{    
         font-size: 1.4rem;
         margin-bottom: 4rem;
-
         column-count: 2;
         column-gap: 4rem;//1em = 14px
         column-rule: 1px solid  $color-grey-light-2;
-
         -moz-column-count: 2;
         -moz-column-gap: 4rem;//1em = 14px
         -moz-column-rule: 1px solid  $color-grey-light-2;
-
         hyphens: auto;
         -moz-hyphens: auto;
         -webkit-hyphens: auto;
         -ms-hyphens: auto;
+    }
+
+
+    //open state
+    &:target &__content { //the pop up begin the target and then we style the child element of the popup
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &:target{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__close {
+        &:link,
+        &:visited{
+            color:$color-grey-dark;
+            position:absolute;
+            top:2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1; //override the value defined
+            transition: all .2s;
+        }
+
+        &:hover{
+            color:$color-primary;
+        }
     }
 }  
